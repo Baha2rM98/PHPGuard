@@ -8,7 +8,7 @@
  * Managing key is done by this class
  **/
 
-namespace PHPGuard\Core;
+namespace PHPGuard\Crypto;
 
 
 use PHPGuard\Core\Exceptions\KeyException;
