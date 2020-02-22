@@ -8,7 +8,7 @@
  * Base PHPGuard cryptography class
  **/
 
-namespace PHPGuard\Core\Crypto;
+namespace PHPGuard\Core\BaseCrypto;
 
 
 use PHPGuard\Core\KeySetup;
