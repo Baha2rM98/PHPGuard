@@ -24,7 +24,7 @@ class SetKeyCommand extends Command
 {
 
     /**
-     * @param  string|null  $name  The name of the command. The default name is null, it means it must be set in configure()
+     * @param string|null $name The name of the command. The default name is null, it means it must be set in configure()
      */
     public function __construct(string $name = null)
     {
@@ -38,20 +38,20 @@ class SetKeyCommand extends Command
     protected function configure(): void
     {
         $this->setName("set:key")
-                ->setDescription("Set a key for Guard cryptography system")
-                ->setHelp("<comment>\nSet a key for Guard cryptography system. It passes a complex progress to save It in Redis database as key => value.\n</comment>");
+            ->setDescription("Set a key for Guard cryptography system")
+            ->setHelp("<comment>\nSet a key for Guard cryptography system. It passes a complex progress to save It in Redis database as key => value.\n</comment>");
     }
 
 
     /**
      * Executes this command
      *
-     * @param  InputInterface   $input
-     * @param  OutputInterface  $output
-     *
+     * @param InputInterface $input
+     * @param OutputInterface $output
+     * @return integer
      * @throws RuntimeException Throws runtime exception if it fails to set the key
      */
-    protected function execute(InputInterface $input, OutputInterface $output): void
+    protected function execute(InputInterface $input, OutputInterface $output)
     {
         $scn = new Scanner();
         $redis = new Redis();
@@ -72,5 +72,6 @@ class SetKeyCommand extends Command
         }
         $output->writeln("");
         $output->writeln("<info>>>> The key generated successfully!\n</info>");
+        return 0;
     }
 }

@@ -11,7 +11,7 @@
 namespace PHPGuard\Console;
 
 
-use PHPGuard\Core\Key;
+use PHPGuard\Crypto\Key;
 use PHPGuard\Crypto\Crypto;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -23,7 +23,7 @@ class TestSystemCommand extends Command
 {
 
     /**
-     * @param  string|null  $name  The name of the command. The default name is null, it means it must be set in configure()
+     * @param string|null $name The name of the command. The default name is null, it means it must be set in configure()
      */
     public function __construct(string $name = null)
     {
@@ -37,27 +37,29 @@ class TestSystemCommand extends Command
     protected function configure(): void
     {
         $this->setName("test")
-                ->setDescription("Tests Guard cryptography system")
-                ->addArgument("inputData", InputArgument::REQUIRED, "input data to test system")
-                ->setHelp("<comment>\nTests Guard cryptography system. You have to set a admin key to test our system.\nIf you have more than one word to test use ''. For example: 'Hello Guard !'.\n</comment>");
+            ->setDescription("Tests Guard cryptography system")
+            ->addArgument("inputData", InputArgument::REQUIRED, "input data to test system")
+            ->setHelp("<comment>\nTests Guard cryptography system. You have to set a admin key to test our system.\nIf you have more than one word to test use ''. For example: 'Hello Guard !'.\n</comment>");
     }
 
 
     /**
      * Executes this command
      *
-     * @param  InputInterface   $input
-     * @param  OutputInterface  $output
+     * @param InputInterface $input
+     * @param OutputInterface $output
+     * @return integer
      */
-    protected function execute(InputInterface $input, OutputInterface $output): void
+    protected function execute(InputInterface $input, OutputInterface $output)
     {
         $crypt = new Crypto();
         $crypt->setKey(Key::getKey());
         $encrypted = $crypt->encryptString($input->getArgument("inputData"));
         $output->writeln("");
-        $output->writeln("Encrypted: ".$encrypted);
+        $output->writeln("Encrypted: " . $encrypted);
         $output->writeln("\n");
-        $output->writeln("Decrypted: ".$crypt->decryptString($encrypted));
+        $output->writeln("Decrypted: " . $crypt->decryptString($encrypted));
         $output->writeln("");
+        return 0;
     }
 }

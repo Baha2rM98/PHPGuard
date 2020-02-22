@@ -21,7 +21,7 @@ class FreshCommand extends Command
 {
 
     /**
-     * @param  string|null  $name  The name of the command. The default name is null, it means it must be set in configure()
+     * @param string|null $name The name of the command. The default name is null, it means it must be set in configure()
      */
     public function __construct(string $name = null)
     {
@@ -35,18 +35,19 @@ class FreshCommand extends Command
     protected function configure(): void
     {
         $this->setName("fresh")
-                ->setDescription("Freshens Redis database")
-                ->setHelp("<comment>\nDrops all data in all databases. Be careful when using this command!\n</comment>");
+            ->setDescription("Freshens Redis database")
+            ->setHelp("<comment>\nDrops all data in all databases. Be careful when using this command!\n</comment>");
     }
 
 
     /**
      * Executes this command
      *
-     * @param  InputInterface   $input
-     * @param  OutputInterface  $output
+     * @param InputInterface $input
+     * @param OutputInterface $output
+     * @return integer
      */
-    protected function execute(InputInterface $input, OutputInterface $output): void
+    protected function execute(InputInterface $input, OutputInterface $output)
     {
         $redis = new Redis();
         $redis->connect("127.0.0.1");
@@ -54,5 +55,6 @@ class FreshCommand extends Command
         $output->writeln("");
         $output->writeln("<info>>>> Redis database freshened up!</info>");
         $output->writeln("");
+        return 0;
     }
 }

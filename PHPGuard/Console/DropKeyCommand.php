@@ -23,7 +23,7 @@ class DropKeyCommand extends Command
 {
 
     /**
-     * @param  string|null  $name  The name of the command. The default name is null, it means it must be set in configure()
+     * @param string|null $name The name of the command. The default name is null, it means it must be set in configure()
      */
     public function __construct(string $name = null)
     {
@@ -37,20 +37,20 @@ class DropKeyCommand extends Command
     protected function configure(): void
     {
         $this->setName("drop:key")
-                ->setDescription("Drops registered key")
-                ->setHelp("<comment>\nDrops registered key. You can generate a new one with 'php guard set:key'\n</comment>");
+            ->setDescription("Drops registered key")
+            ->setHelp("<comment>\nDrops registered key. You can generate a new one with 'php guard set:key'\n</comment>");
     }
 
 
     /**
      * Executes this command
      *
-     * @param  InputInterface   $input
-     * @param  OutputInterface  $output
-     *
+     * @param InputInterface $input
+     * @param OutputInterface $output
+     * @return integer
      * @throws RuntimeException Throws runtime exception if it fails to drop the key
      */
-    protected function execute(InputInterface $input, OutputInterface $output): void
+    protected function execute(InputInterface $input, OutputInterface $output)
     {
         $redis = new Redis();
         $redis->connect("127.0.0.1");
@@ -61,5 +61,6 @@ class DropKeyCommand extends Command
         $redis->del($key);
         $output->writeln("");
         $output->writeln("<info>>>> The key dropped successfully!\n</info>");
+        return 0;
     }
 }
