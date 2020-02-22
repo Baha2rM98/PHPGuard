@@ -21,11 +21,11 @@
     }
   ],
   "require": {
-    "php": "^7.2.25",
+    "php": "^7.2",
     "ext-openssl": "*",
     "ext-json": "*",
     "ext-redis": "*",
-    "symfony/console": "^4.3",
+    "symfony/console": "^5.0",
     "baha2rmirzazadeh/phpscanner": "^1.5"
   },
   "config": {
