@@ -28,7 +28,7 @@ class Key
     }
 
 
-    /** Returns registered key
+    /** Returns pure registered key
      *
      * @return string Returns registered key
      *

@@ -36,7 +36,7 @@ class Crypto extends BaseCrypto implements Encryption, Decryption
     /**
      * Constructor
      *
-     * @param  string  $algorithm  The cryptography algorithm
+     * @param string $algorithm The cryptography algorithm
      *                             <p>
      *                             The default method is AES-256-CBC
      */
@@ -73,7 +73,7 @@ class Crypto extends BaseCrypto implements Encryption, Decryption
     /**
      * Set key of cryptography system
      *
-     * @param  string  $key  Key of cryptography system [recommended use user's password as key]
+     * @param string $key Key of cryptography system [recommended use user's password as key]
      */
     public function setKey($key): void
     {
@@ -84,7 +84,7 @@ class Crypto extends BaseCrypto implements Encryption, Decryption
     /**
      * Set algorithm of cryptography system
      *
-     * @param  string  $cipher  The new cipher
+     * @param string $cipher The new cipher
      *
      * @return Crypto Returns new instance of Crypto class with $cipher parameter
      */
@@ -95,7 +95,7 @@ class Crypto extends BaseCrypto implements Encryption, Decryption
 
 
     /**
-     * Returns key of cryptography system
+     * Returns constructed key of cryptography system
      *
      * @return string Returns key of cryptography system
      */
@@ -119,8 +119,8 @@ class Crypto extends BaseCrypto implements Encryption, Decryption
     /**
      * Encrypts the given data
      *
-     * @param  mixed    $data       The data that will be encrypted
-     * @param  boolean  $serialize  [Optional] If set to true, converts mixed types to string
+     * @param mixed $data The data that will be encrypted
+     * @param boolean $serialize [Optional] If set to true, converts mixed types to string
      *
      * @return string Returns encrypted value, false on failure
      * @throws EncryptionException Throws exception if validate method returns false or can not decrypt the the $cipher
@@ -141,7 +141,7 @@ class Crypto extends BaseCrypto implements Encryption, Decryption
     /**
      * Encrypts the given data
      *
-     * @param  string  $data  The data that will be encrypted
+     * @param string $data The data that will be encrypted
      *
      * @return string Returns encrypted data, false on failure
      * @throws EncryptionException Throws exception if validate method returns false or can not encrypt the the $data
@@ -156,8 +156,8 @@ class Crypto extends BaseCrypto implements Encryption, Decryption
     /**
      * Decrypts the given cipher
      *
-     * @param  string   $jsonPayload  The json payload that contains cipher and mac
-     * @param  boolean  $unserialize  [Optional] If set to true, converts string types to mixed
+     * @param string $jsonPayload The json payload that contains cipher and mac
+     * @param boolean $unserialize [Optional] If set to true, converts string types to mixed
      *
      * @return false|mixed|string Returns encrypted value, false on failure
      * @throws DecryptionException Throws exception if validate method returns false or can not decrypt the the $cipher
@@ -178,7 +178,7 @@ class Crypto extends BaseCrypto implements Encryption, Decryption
     /**
      * Decrypts the given cipher
      *
-     * @param  string  $jsonPayload  The json payload that contains cipher and mac
+     * @param string $jsonPayload The json payload that contains cipher and mac
      *
      * @return false|string Returns decrypted cipher, false on failure
      * @throws DecryptionException Throws exception if validate method returns false or can not decrypt the the $cipher
@@ -193,7 +193,7 @@ class Crypto extends BaseCrypto implements Encryption, Decryption
     /**
      * Generates a new key
      *
-     * @param  int  $length  The length of the key
+     * @param int $length The length of the key
      *
      * @return string Returns generated key
      */
@@ -206,7 +206,7 @@ class Crypto extends BaseCrypto implements Encryption, Decryption
     /**
      * Generates cryptographically secure pseudo-random bytes
      *
-     * @param  integer  $length  The length of the random byte
+     * @param integer $length The length of the random byte
      *
      * @return string Returns Generated random
      */
@@ -219,7 +219,7 @@ class Crypto extends BaseCrypto implements Encryption, Decryption
     /**
      * Generates cryptographically secure pseudo-random strings
      *
-     * @param  integer  $length  The length of the random string
+     * @param integer $length The length of the random string
      *
      * @return string Returns Generated random
      */
@@ -237,11 +237,11 @@ class Crypto extends BaseCrypto implements Encryption, Decryption
     public static function supported()
     {
         return [
-                "AES-128-CBC",
-                "AES-192-CBC",
-                "AES-256-CBC",
-                "BF-CBC",
-                "CAST5-CBC"
+            "AES-128-CBC",
+            "AES-192-CBC",
+            "AES-256-CBC",
+            "BF-CBC",
+            "CAST5-CBC"
         ];
     }
 }
